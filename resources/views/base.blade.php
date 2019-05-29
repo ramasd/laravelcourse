@@ -1,6 +1,6 @@
 <html>
   <head>
-  <title>{{ $meta_title ?? 'Krepšinio aikštelės' }}</title>
+    <title>{{ $meta_title ?? 'Krepšinio aikštelės' }}</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
   </head>
   <body>
