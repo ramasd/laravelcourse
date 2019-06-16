@@ -21,7 +21,8 @@ Route::get('aiksteles/{city_id?}', 'SearchController@getSearch');
 
 Route::get('aikstele/{title}', 'CourtController@getCourt');
 
-Route::middleware(['auth'])->group(function() {
+// Route::middleware(['auth'])->group(function() {
+Route::middleware([])->group(function() {
 
     Route::resource('admin/aiksteles', 'AdminCourtsController');
 

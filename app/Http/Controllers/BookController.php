@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Book;
 use Illuminate\Http\Request;
-use App\Type;
 
-class AdminTypesController extends Controller
+class BookController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class AdminTypesController extends Controller
      */
     public function index()
     {
-        return view('admin.types.list', array('types' => Type::all()));
+        //
     }
 
     /**
@@ -24,7 +24,7 @@ class AdminTypesController extends Controller
      */
     public function create()
     {
-        return view('admin.types.create');
+        //
     }
 
     /**
@@ -35,48 +35,51 @@ class AdminTypesController extends Controller
      */
     public function store(Request $request)
     {
-        $type = new Type;
-        $type->title = $request->get('title');
-        $type->save();
-        return redirect('admin/aiksteliu_tipai');
+        //
+    }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Book  $book
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Book $book)
+    {
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Book $book)
     {
-        return view('admin.types.edit', array('type' => Type::find($id)));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Book $book)
     {
-        $type = Type::find($id);
-        $type->title = $request->get('title');
-        $type->save();
-        return redirect('admin/aiksteliu_tipai');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Book $book)
     {
-        Type::find($id)->delete();
-        return redirect('admin/aiksteliu_tipai');
+        //
     }
 }

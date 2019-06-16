@@ -14,6 +14,10 @@
           <li><a href="{{ url('aiksteles') }}">Aikštelių paieška</a></li>
           <li><a href="{{ url('apie') }}">Apie projektą</a></li>
           <li><a href="{{ url('kontaktai') }}">Kontaktai</a></li>
+          <br>
+          <li><a href="{{ url('admin/miestai') }}">Miestai</a></li>
+          <li><a href="{{ url('admin/aiksteliu_tipai') }}">Tipai</a></li>
+          <li><a href="{{ url('admin/aiksteles') }}">Aikštelės</a></li>
         </ul>
         <div class="clear"></div>
       </div>

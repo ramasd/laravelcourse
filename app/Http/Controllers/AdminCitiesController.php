@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\City;
 
 class AdminCitiesController extends Controller
 {
@@ -11,9 +12,9 @@ class AdminCitiesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index() // grąžina aikštelių sąrašą
     {
-        //
+        return view('admin.cities.list', array('cities' => City::all()));
     }
 
     /**
@@ -21,9 +22,9 @@ class AdminCitiesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create() // grąžina naujos aikštelės įvedimo formą
     {
-        //
+        return view('admin.cities.create');
     }
 
     /**
@@ -32,20 +33,12 @@ class AdminCitiesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request) // išsaugo naujai įvestą aikštelę
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        $city = new City;
+        $city->title = $request->get('title');
+        $city->save();
+        return redirect('admin/miestai');
     }
 
     /**
@@ -54,9 +47,9 @@ class AdminCitiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id) // grąžiną konkrečios aikštelės redagavimo formą
     {
-        //
+        return view('admin.cities.edit', array('city' => City::find($id)));
     }
 
     /**
@@ -66,9 +59,12 @@ class AdminCitiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id) // išsaugo redaguotus aikštelės duomenis
     {
-        //
+        $city = City::find($id);
+        $city->title = $request->get('title');
+        $city->save();
+        return redirect('admin/miestai');
     }
 
     /**
@@ -77,8 +73,9 @@ class AdminCitiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id) // ištrina konkrečią aikštelę
     {
-        //
+        City::find($id)->delete();
+        return redirect('admin/miestai');
     }
 }
