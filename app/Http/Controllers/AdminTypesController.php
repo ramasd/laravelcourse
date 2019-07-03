@@ -1,9 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Type;
+use App\Http\Requests\CreateTypeRequest;
 
 class AdminTypesController extends Controller
 {
@@ -33,10 +32,10 @@ class AdminTypesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateTypeRequest $request)
     {
         $type = new Type;
-        $type->title = $request->get('title');
+        $type->title = $request->input('title');
         $type->save();
         return redirect('admin/aiksteliu_tipai');
 
@@ -60,10 +59,10 @@ class AdminTypesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateTypeRequest $request, $id)
     {
         $type = Type::find($id);
-        $type->title = $request->get('title');
+        $type->title = $request->input('title');
         $type->save();
         return redirect('admin/aiksteliu_tipai');
     }

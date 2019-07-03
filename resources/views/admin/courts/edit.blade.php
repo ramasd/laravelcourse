@@ -3,37 +3,36 @@
 @section('content')
 <h2>Aikštelės redagavimas</h2>
 
-<form action="{{ url('admin/aiksteles/' . $court->id) }}" method="post">
-<input name="_method" type="hidden" value="PUT">
-{{ csrf_field() }}
-	Pavadinimas:
-	<br />
-	<input type="text" name="title" value="{{ $court->title }}" />
-	<br /><br />
-	Adresas:
-	<br />
-	<input type="text" name="address" value="{{ $court->address }}" />
-	<br /><br />
-	Aprašymas:
-	<br />
-	<textarea name="description">{{ $court->description }}</textarea>
-	<br /><br />
-	Tipas:
-	<br />
-	<select name="type_id">
-		@foreach ($types as $type)
-        <option value="{{ $type->id }}" @if ($type->id == $court->type_id) selected @endif >{{ $type->title }}</option>
-		@endforeach
-	</select>
-	<br /><br />
-	Miestas:
-	<br />
-	<select name="city_id">
-		@foreach ($cities as $city)
-		<option value="{{ $city->id }}" @if ($city->id == $court->city_id) selected @endif>{{ $city->title }}</option>
-		@endforeach
-	</select>
-	<br /><br />
-	<input type="submit" value=" Saugoti " />
-</form>
+@if($errors->any())
+  @foreach ($errors->all() as $error)
+    <div style='color:red'>{{ $error }}</div>
+  @endforeach
+  <br />
+@endif
+
+{!!Form::open(['url' => 'admin/aiksteles/' . $court->id, 'method' => 'put']) !!}
+  {!! Form::label('text', 'Pavadinimas:') !!}
+  <br />
+  {!! Form::text('title', $court->title) !!}
+  <br /><br />
+  {!! Form::label('text', 'Adresas:') !!}
+  <br />
+  {!! Form::text('address', $court->address) !!}
+  <br /><br />
+  {!! Form::label('text', 'Aprašymas:') !!}
+  <br />
+  {!! Form::textarea('description', $court->description) !!}
+  <br /><br />
+  {!! Form::label('text', 'Tipas:') !!}
+  <br />
+  {!! Form::select('type_id', \App\Type::pluck('title'), $court->type_id, ['placeholder' => '']) !!}
+  <br /><br />
+  {!! Form::label('Miestas:') !!}
+  <br />
+  {!! Form::select('city_id', \App\City::pluck('title'), $court->city_id, ['placeholder' => '']) !!}
+  <br /><br />
+  {!! Form::submit('Saugoti') !!}
+  <br />
+{!! Form::close() !!}
+
 @stop

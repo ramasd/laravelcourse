@@ -14,13 +14,10 @@
 		<td>{{ $city->title }}</td>
 		<td>
 			<a href="{{ url('admin/miestai/' . $city->id . '/edit') }}">Redaguoti</a>
-			<form style="display:inline" 
-				action="{{ url('admin/miestai/' . $city->id) }}" method="post" 
-				onsubmit="return confirm('Ar tikrai?')">
-				<input type="hidden" name="_method" value="DELETE" />
-				{{ csrf_field() }}
-				<input type="submit" value="Trinti" />
-			</form>
+			{!! Form::open(['url' => 'admin/miestai/' . $city->id, 'method' => 'delete', 'onsubmit' => 'return confirm("Ar tikrai?")', 'style' => 'display:inline']) !!}
+			{!! Form::submit('Trinti') !!}
+			{!! Form::close() !!}
+
 		</td>
 	</tr>
 	@endforeach

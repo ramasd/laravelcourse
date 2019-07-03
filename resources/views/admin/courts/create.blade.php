@@ -3,38 +3,38 @@
 @section('content')
 <h2>Nauja aikštelė</h2>
 
-<form action="{{ url('admin/aiksteles') }}" method="post">
-{{ csrf_field() }}
-	Pavadinimas:
-	<br />
-	<input type="text" name="title" />
-	<br /><br />
-    Adresas:
-    <br />
-    <input type="text" name="address" />
-	<br /><br />
-	Aprašymas:
-    <br />
-	<textarea name="description"></textarea>
-	<br /><br />
-    Tipas:
-    <br />
-    <select name="type_id">
-        @foreach ($types as $type)
-        <option value="{{ $type->id }}">{{ $type->title }}</option>
-        @endforeach
-    </select>
-    <br /><br />
-    Miestas:
-    <br />
-    <select name="city_id">
-        @foreach ($cities as $city)
-        <option value="{{ $city->id }}">{{ $city->title }}</option>
-        @endforeach
-    </select>
-    <br /><br />
-	<input type="submit" value=" Saugoti " />
-</form>
+@if($errors->any())
+  @foreach ($errors->all() as $error)
+    <div style='color:red'>{{ $error }}</div>
+  @endforeach
+  <br />
+@endif
+
+{!! Form::open(['url' => 'admin/aiksteles']) !!}
+  {!! Form::label('text', 'Pavadinimas:') !!}
+  <br />
+  {!! Form::text('title') !!}
+  <br /><br />
+  {!! Form::label('text', 'Adresas:') !!}
+  <br />
+  {!! Form::text('address') !!}
+  <br /><br />
+  {!! Form::label('text', 'Aprašymas:') !!}
+  <br />
+  {!! Form::textarea('description') !!}
+  <br /><br />
+  {!! Form::label('Tipas:') !!}
+  <br />
+  {!! Form::select('type_id', \App\Type::pluck('title'), null, ['placeholder' => '']) !!}
+  <br /><br />
+  {!! Form::label('Miestas:') !!}
+  <br />
+  {!! Form::select('city_id', \App\City::pluck('title'), null, ['placeholder' => '']) !!}
+  <br /><br />
+  {!! Form::submit('Saugoti') !!}
+  <br />
+{!! Form::close() !!}
+
 @stop
 
 

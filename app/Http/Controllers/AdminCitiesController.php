@@ -1,9 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\City;
+use App\Http\Requests\CreateCityRequest;
 
 class AdminCitiesController extends Controller
 {
@@ -33,7 +32,7 @@ class AdminCitiesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) // išsaugo naujai įvestą aikštelę
+    public function store(CreateCityRequest $request) // išsaugo naujai įvestą aikštelę
     {
         $city = new City;
         $city->title = $request->get('title');
@@ -59,7 +58,7 @@ class AdminCitiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id) // išsaugo redaguotus aikštelės duomenis
+    public function update(CreateCityRequest $request, $id) // išsaugo redaguotus aikštelės duomenis
     {
         $city = City::find($id);
         $city->title = $request->get('title');

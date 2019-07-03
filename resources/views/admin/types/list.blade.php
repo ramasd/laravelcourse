@@ -14,13 +14,9 @@
 		<td>{{ $type->title }}</td>
 		<td>
 			<a href="{{ url('admin/aiksteliu_tipai/' . $type->id . '/edit') }}">Redaguoti</a>
-			<form style="display:inline" 
-				action="{{ url('admin/aiksteliu_tipai/' . $type->id) }}" method="post" 
-				onsubmit="return confirm('Ar tikrai?')">
-				<input type="hidden" name="_method" value="DELETE" />
-				{{ csrf_field() }}
-				<input type="submit" value="Trinti" />
-			</form>
+			{!! Form::open(['url' => 'admin/aiksteliu_tipai/' . $type->id, 'method' => 'delete', 'onsubmit' => 'return confirm("Ar tikrai?")', 'style' => 'display:inline']) !!}
+				{!! Form::submit('Trinti') !!}
+			{!! Form::close() !!}
 		</td>
 	</tr>
 	@endforeach

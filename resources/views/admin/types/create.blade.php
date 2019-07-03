@@ -3,12 +3,19 @@
 @section('content')
 <h2>Naujas tipas</h2>
 
-<form action="{{ url('admin/aiksteliu_tipai') }}" method="post">
-{{ csrf_field() }}
-	Pavadinimas:
-	<br />
-	<input type="text" name="title" />
-	<br />
-	<input type="submit" value=" Saugoti " />
-</form>
+@if($errors->any())
+  @foreach ($errors->all() as $error)
+    <div style='color:red'>{{ $error }}</div>
+  @endforeach
+  <br />
+@endif
+
+{!! Form::open(['url' => 'admin/aiksteliu_tipai']) !!}
+  {!! Form::label('text', 'Pavadinimas:') !!}
+  <br />
+  {!! Form::text('title') !!}
+  <br />
+  {!! Form::submit(' Saugoti ') !!}
+{!! Form::close() !!}
+
 @stop

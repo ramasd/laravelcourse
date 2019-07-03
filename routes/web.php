@@ -31,3 +31,5 @@ Route::middleware([])->group(function() {
     Route::resource('admin/aiksteliu_tipai', 'AdminTypesController');
 
 });
+
+Route::get('test', 'TestController@test');
