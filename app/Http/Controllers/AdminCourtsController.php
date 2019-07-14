@@ -54,7 +54,10 @@ class AdminCourtsController extends Controller
      */
     public function show($id)
     {
-        //
+        $court = Court::find($id);
+        $type = Type::find($court->type_id);
+        $city = City::find($court->city_id);
+        return view('admin.courts.court', ['court' => $court, 'type' => $type, 'city' => $city]);
     }
 
     /**

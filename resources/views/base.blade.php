@@ -21,6 +21,7 @@
         </ul>
         <div class="clear"></div>
       </div>
+      <br />
       <div id="content">
         @yield('content')
       </div>

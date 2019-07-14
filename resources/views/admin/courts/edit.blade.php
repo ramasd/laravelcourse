@@ -25,11 +25,11 @@
   <br /><br />
   {!! Form::label('text', 'Tipas:') !!}
   <br />
-  {!! Form::select('type_id', \App\Type::pluck('title'), $court->type_id, ['placeholder' => '']) !!}
+  {!! Form::select('type_id', \App\Type::pluck('title', 'id'), $court->type_id, ['placeholder' => '']) !!}
   <br /><br />
   {!! Form::label('Miestas:') !!}
   <br />
-  {!! Form::select('city_id', \App\City::pluck('title'), $court->city_id, ['placeholder' => '']) !!}
+  {!! Form::select('city_id', \App\City::pluck('title', 'id'), $court->city_id, ['placeholder' => '']) !!}
   <br /><br />
   {!! Form::submit('Saugoti') !!}
   <br />

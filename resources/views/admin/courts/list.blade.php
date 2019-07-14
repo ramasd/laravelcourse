@@ -12,7 +12,7 @@
 @if ($courts->count() > 0)
 	@foreach ($courts as $court)
 	<tr>
-		<td>{{ $court->title }}</td>
+		<td><a href="{{ url('admin/aiksteles/' . $court->id) }}">{{ $court->title }}</a></td>
 		<td>{{ $court->address }}</td>
 		<td>
 			<a href="{{ url('admin/aiksteles/' . $court->id . '/edit') }}">Redaguoti</a>

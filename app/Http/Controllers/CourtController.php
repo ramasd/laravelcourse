@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class CourtController extends Controller
 {
-    public function getCourt()
+    public function getCourt($title)
     {
-        return view('court');
+        return view('court', ['title' => $title]);
     }
 }

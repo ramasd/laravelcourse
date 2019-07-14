@@ -145,6 +145,9 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'type_id' => 'type',
+        'city_id' => 'city',
+    ],
 
 ];
