@@ -3,6 +3,7 @@
 return [
     'alpha' => 'Laukelyje ":Attribute" privalo būti tik raidės.',
     'required' => 'Laukelis ":Attribute" privalo būti užpildytas.',
+    'confirmed' => 'Laukelio ":Attribute" patvirtinimas nesutampa.',
 
 
     'attributes' => [
@@ -11,6 +12,7 @@ return [
         'description' => 'aprašymas',
         'type_id' => 'tipas',
         'city_id' => 'miestas',
+        'password' => 'slaptažodis'
     ],
 
     'min' => [
@@ -19,6 +21,7 @@ return [
         'string' => 'Laukelis ":Attribute" privalo turėti bent :min simbolius.',
         'array' => 'Laukelis ":Attribute" privalo turėti bent :min elementus.',
     ],
+
 ];
 
 
