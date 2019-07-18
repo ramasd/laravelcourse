@@ -17,11 +17,8 @@ Route::get('apie', 'AboutController@showIndex');
 
 Route::get('kontaktai', 'ContactController@showIndex');
 
-Route::get('aiksteles/{city_id?}', 'SearchController@getSearch');
+Route::get('aikstele/{court_id}', 'CourtController@getCourt');
 
-Route::get('aikstele/{title}', 'CourtController@getCourt');
-
-// Route::middleware(['auth'])->group(function() { //maniškis
 Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('admin/aiksteles', 'AdminCourtsController');
@@ -31,6 +28,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('admin/aiksteliu_tipai', 'AdminTypesController');
 
 });
+
+Route::post('aiksteles', 'SearchController@postSearch');
 
 /**
  * Login Route(s)

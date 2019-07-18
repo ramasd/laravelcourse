@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Court;
 
 class HomeController extends Controller
 {
     public function showWelcome()
     {
-        return view('home');
+        $newest_courts = Court::orderBy('id', 'desc')->take(10)->get();
+        return view('home', compact('newest_courts'));
     }
 }

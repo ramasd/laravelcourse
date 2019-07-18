@@ -1,3 +1,8 @@
+@extends('base')
+
+@section('content')
+<h2>Prisijingimas</h2>
+
 @if ($errors->any())
     <ul>
         @foreach($errors->all() as $error)
@@ -16,3 +21,4 @@
     <br /><br />
     <button type="submit">Prisijungti</button>
 {!! Form::close() !!}
+@stop
