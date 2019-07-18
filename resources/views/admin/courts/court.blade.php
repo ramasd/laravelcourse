@@ -14,8 +14,8 @@
     <td>{{ $court->title }}</td>
     <td>{{ $court->address }}</td>
     <td>{{ $court->description }}</td>
-    <td>{{ $type->title }}</td>
-    <td>{{ $city->title }}</td>
+    <td>{{ $court->type->title }}</td>
+    <td>{{ $court->city->title }}</td>
   </tr>
 </table>
 @stop

@@ -1,3 +1,6 @@
+@extends('base')
+
+@section('content')
 <h2>Registracija</h2> 
 
 @if ($errors->any())
@@ -27,3 +30,4 @@
     <br /><br />
     <button type="submit">Registruotis</button>
 {!! Form::close() !!}
+@stop
