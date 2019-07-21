@@ -59,3 +59,14 @@ div#footer {
 	border-top: 1px dashed #CCC;
 	text-align: center;
 }   
+
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+	background-color: rgb(206, 247, 240);
+    border: 1px solid rgb(134, 255, 245);
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}

@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Type;
 use App\City;
+use App\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -49,6 +50,13 @@ class DatabaseSeeder extends Seeder
         City::create(
             array(
                 'title' => 'Zarasai',
+            )
+        );
+        User::create(
+            array(
+                'name' => 'testname',
+                'email' => 'test@test.com',
+                'password' =>Hash::make('test1234'),
             )
         );
 

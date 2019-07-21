@@ -5,6 +5,7 @@
 
 <table class="data-table">
 <tr>
+	<th>Nuotrauka</th>
 	<th>Pavadinimas</th>
 	<th>Adresas</th>
 	<th>Veiksmai</th>
@@ -12,6 +13,14 @@
 @if ($courts->count() > 0)
 	@foreach ($courts as $court)
 	<tr>
+		<td>
+			@if ($court->img)
+			<a href="{{ asset(Storage::url($court->img)) }}">
+			<!-- Better to use "asset(Storage::url($court->img))" or "url('storage/images/'.$court->img)" ?-->
+				<img src="{{ url('storage/'.$court->img) }}" alt="{{ $court->img }}" height="60" width="60">
+			</a>
+			@endif
+		</td>
 		<td><a href="{{ url('admin/aiksteles/' . $court->id) }}">{{ $court->title }}</a></td>
 		<td>{{ $court->address }}</td>
 		<td>

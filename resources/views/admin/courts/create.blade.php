@@ -10,7 +10,7 @@
   <br />
 @endif
 
-{!! Form::open(['url' => 'admin/aiksteles']) !!}
+{!! Form::open(['url' => 'admin/aiksteles', 'files' => 'true']) !!}
   {!! Form::label('text', 'Pavadinimas:') !!}
   <br />
   {!! Form::text('title') !!}
@@ -30,6 +30,14 @@
   {!! Form::label('Miestas:') !!}
   <br />
   {!! Form::select('city_id', \App\City::pluck('title', 'id'), null, ['placeholder' => '']) !!}
+  <br>
+  {!! Form::label('Nuotrauka:') !!}
+  <br>
+  <!-- {!! Form::file('image') !!} -->
+  <label for="file-upload" class="custom-file-upload">
+    <i class="fa fa-cloud-upload"></i> Pasirinkti nuotrauką
+  </label>
+  {!! Form::file('image', ['id' => 'file-upload']) !!}
   <br /><br />
   {!! Form::submit('Saugoti') !!}
   <br />

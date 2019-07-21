@@ -18,6 +18,7 @@ class CreateCourts extends Migration
             $table->string('title', 100);
             $table->string('address', 100);
             $table->text('description');
+            $table->string('img', 100)->nullable();
             $table->integer('type_id');
             $table->integer('city_id');
             $table->timestamps();

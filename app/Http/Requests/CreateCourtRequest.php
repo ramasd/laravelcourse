@@ -29,6 +29,7 @@ class CreateCourtRequest extends FormRequest
             'description' => 'required',
             'type_id' => 'required',
             'city_id' => 'required',
+            'image' => 'max:2048',
         ];
     }
 }

@@ -18,7 +18,7 @@
         @yield('content')
       </div>
       <div id="footer">
-        © {{ date('Y') }}
+        &copy; {{ date('Y') }}
       </div>
     </div>
   </body>

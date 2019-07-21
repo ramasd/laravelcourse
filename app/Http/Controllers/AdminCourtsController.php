@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Court;
 use App\Type;
 use App\City;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\CreateCourtRequest;
 
 class AdminCourtsController extends Controller
@@ -42,8 +43,12 @@ class AdminCourtsController extends Controller
         $court->description = $request->input('description');
         $court->type_id = $request->input('type_id');
         $court->city_id = $request->input('city_id');
-        $court->save();
-		return redirect('admin/aiksteles');
+        if($request->hasFile('image')) {
+            $court->img = $request->file('image')->hashName(); //$court->img = $request->image->hashName();
+            $request->image->store('public');
+        }
+        $court->save(); 
+        return redirect('admin/aiksteles');
     }
 
     /**
@@ -87,6 +92,12 @@ class AdminCourtsController extends Controller
         $court->description = $request->input('description');
         $court->type_id = $request->input('type_id');
         $court->city_id = $request->input('city_id');
+        if($request->hasFile('image')) {
+            $court->img = $request->file('image')->hashName();
+            $request->image->store('public');
+        } else {
+            $court->img = null;
+        }
         $court->save();
 		return redirect('admin/aiksteles');
     }
